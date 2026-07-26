@@ -146,3 +146,9 @@ Após a geração da resposta:
 | **Text-to-Speech** | `flutter_tts` |
 | **Tela Principal** | `lib/features/chat_ia/chat_ia_screen.dart` |
 | **Prompt de Sistema** | `lib/core/constants/prompts.dart` |
+
+---
+
+<p align="center">
+© 2026 <strong>Gabriel Tupynambá</strong>. Todos os direitos reservados.
+</p>
