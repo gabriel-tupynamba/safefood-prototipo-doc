@@ -36,3 +36,9 @@ lib/
 │
 └── widgets/
     └── custom_button.dart     # Componentes visuais reutilizáveis de UI
+
+---
+
+<p align="center">
+© 2026 <strong>Gabriel Tupynambá</strong>. Todos os direitos reservados.
+</p>
