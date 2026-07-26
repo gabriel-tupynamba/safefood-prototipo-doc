@@ -26,65 +26,123 @@ O módulo combina processamento de linguagem natural (PLN), multimodalidade por 
               └───────────────┐ ┌───────────────┘
                               ▼ │
                ┌──────────────────────────────┐
-               │ GenerativeModel             │
+               │ GenerativeModel              │
                │ (Gemini 2.5 Flash API)       │
                │                              │
                │ SystemInstruction:           │
                │  └── AppPrompts.inspetor...  │
                └──────────────────────────────┘
+```
 
-📜 Instrução de Sistema (System Instruction & Persona)
-A orquestração do modelo é regida pelo arquivo lib/core/constants/prompts.dart via Content.system(AppPrompts.inspetorSystemPrompt). A instrução define a persona do Inspetor SafeFood como um auditor sênior em vigilância sanitária focado estritamente na RDC nº 216/2004 (ANVISA).
+---
 
-Matriz de Validação Obrigatória (Checklist Mental do LLM):
-Higiene dos Manipuladores: Lavagem de mãos, uniformização, ausência de adornos e uso de rede capilar.
+## 📜 Instrução de Sistema (System Instruction & Persona)
 
-Controle Vetorial e de Pragas: Telamento de aberturas, ralos sifonados e prevenção de vetores.
+A orquestração do modelo é regida pelo arquivo **`lib/core/constants/prompts.dart`**, por meio de `Content.system(AppPrompts.inspetorSystemPrompt)`. Essa instrução define a persona do **Inspetor SafeFood** como um auditor sênior em vigilância sanitária, especializado exclusivamente na **RDC nº 216/2004 (ANVISA)**.
 
-Higienização Operacional: Sanitização de superfícies e uso de saneantes regularizados.
+### ✅ Matriz de Validação Obrigatória (Checklist Mental do LLM)
 
-Armazenamento e Rotulagem: Organização sob refrigeração e controle rígido de validade.
+Durante toda a conversa, o modelo verifica sistematicamente os seguintes eixos sanitários:
 
-Manejo de Resíduos: Lixeiras com acionamento não manual (pedal) e frequência de descarte.
+- **Higiene dos Manipuladores**
+  - Lavagem correta das mãos;
+  - Uniformização adequada;
+  - Ausência de adornos;
+  - Uso de rede capilar.
 
-Controle Térmico: Monitoramento de temperatura em cadeia de frio e quente.
+- **Controle Vetorial e de Pragas**
+  - Telamento de aberturas;
+  - Ralos sifonados;
+  - Medidas preventivas contra vetores.
 
-Diretrizes de Comportamento e Tom de Voz:
-Tom Educativo: Parceria pedagógica em vez de postura punitiva.
+- **Higienização Operacional**
+  - Sanitização de superfícies;
+  - Utilização de saneantes regularizados.
 
-Respostas Concisas: Restrição estrita a no máximo duas frases por intervenção, adequando-se ao ritmo ágil de cozinhas profissionais.
+- **Armazenamento e Rotulagem**
+  - Organização sob refrigeração;
+  - Controle rigoroso da validade dos produtos.
 
-Agrupamento Inteligente de Respostas: Se o usuário responde sobre dois tópicos simultaneamente (ex: limpeza e validade), o modelo marca ambos como validados sem duplicar perguntas.
+- **Manejo de Resíduos**
+  - Lixeiras com acionamento não manual (pedal);
+  - Frequência adequada de descarte.
 
-🛡️ Mecanismos de Segurança e Controle de Escopo (Guardrails)
-Para evitar desvios temáticos e alucinações comuns em modelos abertos, o sistema utiliza retenção de contexto contínua via ChatSession:
+- **Controle Térmico**
+  - Monitoramento da cadeia de frio;
+  - Monitoramento da cadeia quente.
 
-Detecção de Fuga de Escopo: O modelo valida se o insumo recebido pertence ao domínio da segurança alimentar.
+### 🗣️ Diretrizes de Comportamento
 
-Manutenção do Bloqueio: Caso o usuário introduza assuntos alheios (ex: esportes ou notícias), o assistente responde de forma amigável, mas recusa o aprofundamento no tema alheio e reorienta a pauta imediatamente para a auditoria sanitária.
+O comportamento conversacional do modelo segue regras explícitas definidas na *System Instruction*:
 
-Persistência de Diálogo: A sessão (_chat = _model.startChat()) preserva a memória das checagens já realizadas durante toda a execução.
+- **Tom educativo**, privilegiando orientação e parceria em vez de postura punitiva;
+- **Respostas concisas**, limitadas a no máximo duas frases por interação;
+- **Agrupamento inteligente de respostas**, permitindo validar múltiplos requisitos quando o usuário responde sobre mais de um tópico simultaneamente.
 
-🎙️ Processamento Multimodal de Áudio & Acessibilidade
-O aplicativo implementa escuta e resposta por voz direta, eliminando a dependência de digitação manual:
+---
 
-Captura Multimodal (Entrada):
+## 🛡️ Mecanismos de Segurança e Controle de Escopo (Guardrails)
 
-O áudio é gravado via AudioRecorder em formato .m4a e convertido em array de bytes em memória.
+Para reduzir alucinações e impedir desvios temáticos, o sistema utiliza retenção contínua de contexto através da classe `ChatSession`.
 
-Os bytes são enviados diretamente ao SDK do Gemini encapsulados em uma estrutura multimodal DataPart('audio/m4a', bytes) combinada com a instrução TextPart.
+### 🔒 Controle de Escopo
 
-Síntese de Fala / Text-To-Speech (Saída):
+O modelo verifica continuamente se cada mensagem recebida pertence ao domínio da segurança dos alimentos.
 
-A resposta textual retornada pelo Gemini é repassada imediatamente para a engine nativa FlutterTts.
+Caso o usuário introduza assuntos externos (como esportes, notícias ou política), o assistente:
 
-A reprodução em áudio ocorre em português (pt-BR) com velocidade ajustada (0.6) para clareza em ambientes ruidosos.
+- responde de forma cordial;
+- informa que está restrito ao domínio sanitário;
+- redireciona imediatamente a conversa para a auditoria de alimentos.
 
-⚙️ Ficha Técnica do Módulo ChatIAScreen.dart
-Modelo Ativo: gemini-2.5-flash
+### 🧠 Persistência de Contexto
 
-SDK: google_generative_ai (Pacote oficial do Google para Flutter)
+A sessão iniciada por:
 
-Gerenciamento de Mídia: record (gravação), path_provider (arquivos temporários), flutter_tts (síntese)
+```dart
+_chat = _model.startChat();
+```
 
-Arquivos do Módulo: lib/features/chat_ia/chat_ia_screen.dart e lib/core/constants/prompts.dart
+mantém a memória de toda a auditoria durante a execução, evitando repetição de perguntas já respondidas e preservando o estado da inspeção.
+
+---
+
+## 🎙️ Processamento Multimodal de Áudio e Acessibilidade
+
+O módulo implementa interação completamente por voz, reduzindo a necessidade de digitação durante inspeções sanitárias.
+
+### 🎤 Entrada por Áudio
+
+O fluxo de captura multimodal ocorre da seguinte forma:
+
+1. O áudio é gravado utilizando **AudioRecorder** em formato `.m4a`;
+2. O arquivo é convertido para um vetor de bytes em memória;
+3. Os bytes são enviados ao Gemini através de:
+
+```dart
+DataPart('audio/m4a', bytes)
+```
+
+4. O `DataPart` é combinado com um `TextPart`, permitindo que o modelo interprete simultaneamente a entrada de voz e a instrução textual.
+
+### 🔊 Síntese de Voz (Text-to-Speech)
+
+Após a geração da resposta:
+
+- o texto é encaminhado automaticamente ao **FlutterTts**;
+- a síntese é realizada em **Português (pt-BR)**;
+- a velocidade de reprodução é configurada para **0.6**, favorecendo inteligibilidade em ambientes ruidosos.
+
+---
+
+## ⚙️ Ficha Técnica do Módulo (`ChatIAScreen.dart`)
+
+| Componente | Implementação |
+|------------|---------------|
+| **Modelo LLM** | Gemini 2.5 Flash |
+| **SDK** | `google_generative_ai` |
+| **Gravação de Áudio** | `record` |
+| **Arquivos Temporários** | `path_provider` |
+| **Text-to-Speech** | `flutter_tts` |
+| **Tela Principal** | `lib/features/chat_ia/chat_ia_screen.dart` |
+| **Prompt de Sistema** | `lib/core/constants/prompts.dart` |
