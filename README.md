@@ -43,7 +43,7 @@ O assistente virtual utiliza o modelo **Google Gemini** pré-configurado com ins
 
 | Início da Conversa | Tentativa de Fuga do Escopo | Resposta Orientada à RDC 216 |
 | :---: | :---: | :---: |
-| <img src="assets/ia_sanitaria/IA_Inspecao_sanitária.jpeg" width="220"/> | <img src="assets/ia_sanitaria/Tentativa_de_Fuga_do_Escopo.jpeg" width="220"/> | <img src="assets/ia_sanitaria/Resposta_Comum.jpeg" width="220"/> |
+| <img src="assets/ia_sanitaria/IA_Inspeçao_sanitária.jpeg" width="220"/> | <img src="assets/ia_sanitaria/Tentativa_de_Fuga_do_Escopo.jpeg" width="220"/> | <img src="assets/ia_sanitaria/Resposta_Comum.jpeg" width="220"/> |
 
 ---
 
