@@ -3,18 +3,18 @@
 Bem-vindo ao repositório de documentação e auditoria visual do **SafeFood**: um protótipo de aplicativo móvel desenvolvido para simplificar a autoavaliação sanitária e a orientação sobre segurança dos alimentos, com base na **RDC nº 216/2004 (ANVISA)**.
 
 > **Nota de Autoria e Confidencialidade:**  
-> Este repositório destina-se exclusivamente à demonstração visual, arquitetural e documental da aplicação. O código-fonte integral permanece em repositório privado sob propriedade e autoria de **Gabriel Tupy**.
+> Este repositório destina-se exclusivamente à demonstração visual, arquitetural e documental da aplicação. O código-fonte integral permanece em repositório privado sob propriedade e autoria de **Gabriel Tupynambá**.
 
 ---
 
 ## 📱 Fluxo de Funcionamento e Telas Reais
 
 ### 1. Autenticação e Entrada no Sistema
-O aplicativo conta com fluxo completo de identificação, permitindo a recepção do usuário, login direto ou criação de uma conta anônima de teste para a pesquisa.
+O aplicativo conta com fluxo completo de identificação, permitindo a recepção do usuário, login direto ou criação de conta anônima com nome de usuário e senha da preferência do usuário.
 
 | Tela de Apresentação | Tela de Login | Registro de Conta |
 | :---: | :---: | :---: |
-| <img src="assets/autenticacao/welcome.jpeg" width="220"/> | <img src="assets/autenticacao/login.jpeg" width="220"/> | <img src="assets/autenticacao/registro.jpeg" width="220"/> |
+| <img src="assets/autenticacao/Welcome.jpeg" width="220"/> | <img src="assets/autenticacao/Login.jpeg" width="220"/> | <img src="assets/autenticacao/Registro.jpeg" width="220"/> |
 
 ---
 
@@ -23,7 +23,7 @@ Após autenticado, o usuário acessa a tela inicial do SafeFood. O módulo de ch
 
 | Painel Principal | Formulário RDC 216 | Resultado do Checklist |
 | :---: | :---: | :---: |
-| <img src="assets/tela_inicial.jpeg" width="220"/> | <img src="assets/checklist_sanitario/checklist_sanitario.jpeg" width="220"/> | <img src="assets/checklist_sanitario/resultado_checklist.jpeg" width="220"/> |
+| <img src="assets/Tela_Inicial.jpeg" width="220"/> | <img src="assets/checklist_sanitario/Checklist_Sanitário.jpeg" width="220"/> | <img src="assets/checklist_sanitario/resultado_checklist.jpeg" width="220"/> |
 
 ---
 
@@ -32,7 +32,7 @@ Módulo de leitura ótica (EAN-13) pela câmera do dispositivo. Ao escanear um p
 
 | Leitura do Código de Barras | Resultado e Orientações do Produto |
 | :---: | :---: |
-| <img src="assets/leitor_orientador_alimentos/leitura_de_produto.jpeg" width="230"/> | <img src="assets/leitor_orientador_alimentos/resultado_produto.jpeg" width="230"/> |
+| <img src="assets/leitor_orientador_alimentos/Leitura_de_Produto.jpeg" width="230"/> | <img src="assets/leitor_orientador_alimentos/Resultado_Produto.jpeg" width="230"/> |
 
 ---
 
@@ -43,7 +43,7 @@ O assistente virtual utiliza o modelo **Google Gemini** pré-configurado com ins
 
 | Início da Conversa | Tentativa de Fuga do Escopo | Resposta Orientada à RDC 216 |
 | :---: | :---: | :---: |
-| <img src="assets/ia_sanitaria/ia_inspecao_sanitaria.jpeg" width="220"/> | <img src="assets/ia_sanitaria/tentativa_de_fuga_do_escopo.jpeg" width="220"/> | <img src="assets/ia_sanitaria/resposta_comum.jpeg" width="220"/> |
+| <img src="assets/ia_sanitaria/IA_Inspecao_sanitária.jpeg" width="220"/> | <img src="assets/ia_sanitaria/¨Tentativa_de_Fuga_do_Escopo.jpeg" width="220"/> | <img src="assets/ia_sanitaria/Resposta_Comum.jpeg" width="220"/> |
 
 ---
 
@@ -72,7 +72,7 @@ O assistente virtual utiliza o modelo **Google Gemini** pré-configurado com ins
 
 Para testes operacionais na build de demonstração:
 * **Usuário:** `ContaTeste`
-* **Senha:** `123456`
+* **Senha:** `testando`
 
 ---
-© 2026 Gabriel Tupy. Todos os direitos reservados.
+© 2026 Gabriel Tupynambá. Todos os direitos reservados.
