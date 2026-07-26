@@ -3,75 +3,76 @@
 Bem-vindo ao repositório de documentação e auditoria visual do **SafeFood**: um protótipo de aplicativo móvel desenvolvido para simplificar a autoavaliação sanitária e a orientação sobre segurança dos alimentos, com base na **RDC nº 216/2004 (ANVISA)**.
 
 > **Nota de Autoria e Confidencialidade:**  
-> Este repositório destina-se exclusivamente à demonstração visual, arquitetural e documental da aplicação. O código-fonte integral permanece em repositório privado sob propriedade e autoria de **Gabriel Tupynambá**.
+> Este repositório destina-se exclusivamente à demonstração visual, arquitetural e documental da aplicação. O código-fonte integral permanece em repositório privado sob propriedade e autoria de **Gabriel Tupy**.
 
 ---
 
-## 📱 Visão Geral do Sistema
+## 📱 Fluxo de Funcionamento e Telas Reais
 
-O aplicativo combina três módulos principais para auxiliar manipuladores e consumidores:
+### 1. Autenticação e Entrada no Sistema
+O aplicativo conta com fluxo completo de identificação, permitindo a recepção do usuário, login direto ou criação de uma conta anônima de teste para a pesquisa.
 
-1. **Modo Expresso (Checklist Offline):** Formulário interativo com 20 pontos de checagem derivados da RDC 216.
-2. **Scanner de Alimentos:** Leitura de código de barras (EAN-13) integrada à base internacional *Open Food Facts*, exibindo informações do produto e diretrizes sanitárias de conservação.
-3. **Inspetor IA:** Assistente conversacional alimentado por Inteligência Artificial (Google Gemini), programado com restrição estrita de escopo (*System Instruction*) para responder apenas a temas de segurança alimentar e ignorar assuntos alheios.
+| Tela de Apresentação | Tela de Login | Registro de Conta |
+| :---: | :---: | :---: |
+| <img src="assets/autenticacao/welcome.jpeg" width="220"/> | <img src="assets/autenticacao/login.jpeg" width="220"/> | <img src="assets/autenticacao/registro.jpeg" width="220"/> |
 
 ---
 
-## 🖼️ Fluxo de Funcionamento e Telas Reais
+### 2. Painel Central & Checklist Sanitário
+Após autenticado, o usuário acessa a tela inicial do SafeFood. O módulo de checklist conduz uma autoavaliação objetiva offline baseada nos 20 pontos de checagem críticos da RDC 216/2004, gerando o resultado da inspeção.
 
-### 1. Autenticação e Painel Principal
-O sistema conta com fluxo simplificado de login/cadastro e painel dinâmico com navegação direta para os três módulos de inspeção.
+| Painel Principal | Formulário RDC 216 | Resultado do Checklist |
+| :---: | :---: | :---: |
+| <img src="assets/tela_inicial.jpeg" width="220"/> | <img src="assets/checklist_sanitario/checklist_sanitario.jpeg" width="220"/> | <img src="assets/checklist_sanitario/resultado_checklist.jpeg" width="220"/> |
 
-| Tela de Entrada | Painel Principal |
+---
+
+### 3. Leitura de Código de Barras e Orientação Sanitária
+Módulo de leitura ótica (EAN-13) pela câmera do dispositivo. Ao escanear um produto comercial, o sistema realiza a busca de informações e apresenta as diretrizes sanitárias de conservação e manuseio.
+
+| Leitura do Código de Barras | Resultado e Orientações do Produto |
 | :---: | :---: |
-| <img src="assets/login.jpeg" width="250"/> | <img src="assets/painel.jpeg" width="250"/> |
+| <img src="assets/leitor_orientador_alimentos/leitura_de_produto.jpeg" width="230"/> | <img src="assets/leitor_orientador_alimentos/resultado_produto.jpeg" width="230"/> |
 
 ---
 
-### 2. Leitura de Código de Barras e Categorização
-Ao centralizar o código de barras na câmera (ex: produto *Piracanjuba Zero Lactose*), o protótipo identifica a nomenclatura e exibe as recomendações preliminares de conservação e higiene.
+### 4. IA Sanitária & Controle de Escopo (Guardrails)
+O assistente virtual utiliza o modelo **Google Gemini** pré-configurado com instrução de sistema (*System Prompt*) para auditoria sanitária. 
 
-| Leitura da Embalagem | Resultado & Orientação |
-| :---: | :---: |
-| <img src="assets/scanner_camera.jpeg" width="250"/> | <img src="assets/scanner_resultado.jpeg" width="250"/> |
+> 💡 **Demonstração de Segurança (Guardrail):** Se o usuário tenta desviar o assunto com perguntas alheias (ex: *"recorde de salto olímpico"*), a IA recusa a resposta e redireciona a conversa de volta à auditoria sanitária.
 
----
-
-### 3. Assistente de IA & Restrição de Escopo (Guardrails)
-Demonstração da Inteligência Artificial em ação. Quando questionada sobre assuntos fora da inspeção sanitária (ex: *"recorde de salto olímpico"*), a IA recusa a resposta e redireciona o usuário de volta à auditoria sanitária.
-
-| Bloqueio de Assunto Alheio | Orientação Sanitária Válida |
-| :---: | :---: |
-| <img src="assets/ia_bloqueio.jpeg" width="250"/> | <img src="assets/ia_resposta.jpeg" width="250"/> |
+| Início da Conversa | Tentativa de Fuga do Escopo | Resposta Orientada à RDC 216 |
+| :---: | :---: | :---: |
+| <img src="assets/ia_sanitaria/ia_inspecao_sanitaria.jpeg" width="220"/> | <img src="assets/ia_sanitaria/tentativa_de_fuga_do_escopo.jpeg" width="220"/> | <img src="assets/ia_sanitaria/resposta_comum.jpeg" width="220"/> |
 
 ---
 
-## 🏗️ Ficha Técnica e Tecnologias Utilizadas
+## 🛠️ Ficha Técnica e Dependências do Projeto
 
 * **Linguagem & Framework:** Dart / Flutter
-* **Backend & Autenticação:** Firebase Auth
+* **Backend & Autenticação:** `firebase_core` e `firebase_auth`
 * **Processamento de Imagem / Barcode:** `mobile_scanner` (Leitura nativa EAN-13)
 * **Motor de IA Conversacional:** `google_generative_ai` (SDK Oficial Gemini)
-* **Recursos de Acessibilidade (Voz):** `speech_to_text`, `record` e `flutter_tts` (Hands-Free)
-* **Base de Dados Externa:** API *Open Food Facts*
+* **Acessibilidade & Operação por Voz (Hands-Free):** `speech_to_text`, `record`, `flutter_tts` e `audioplayers`
+* **Integração de APIs de Rede:** `http` e `path_provider`
 
 ---
 
 ## 🚀 Próximos Passos do Desenvolvimento (P&D)
 
-Como evolução natural deste protótipo, o plano de trabalho prevê:
-- [x] Construção da interface funcional e fluxo de navegação em Flutter.
-- [x] Módulo de leitor de código de barras e filtro conversacional da IA.
-- [ ] **Implementação da Arquitetura RAG (Retrieval-Augmented Generation):** Evolução da camada de regras determinísticas para busca vetorial na legislação sanitária.
+- [x] Protótipo funcional e fluxo de navegação completo em Flutter.
+- [x] Módulo de leitura ótica de código de barras e filtro conversacional da IA.
+- [x] Interface com suporte à acessibilidade hands-free por comandos de voz.
+- [ ] **Implementação da Arquitetura RAG (Retrieval-Augmented Generation):** Substituição do filtro determinístico por busca vetorial na legislação sanitária.
 - [ ] **Etapa de Alpha Testing:** Validação científica e curadoria do conteúdo gerado com supervisão especialista na RDC nº 216/2004.
 
 ---
 
 ## 🗝️ Acesso Demonstrativo para Avaliação
 
-Para testes operacionais na build demonstrativa:
+Para testes operacionais na build de demonstração:
 * **Usuário:** `ContaTeste`
-* **Senha:** `testando`
+* **Senha:** `123456`
 
 ---
-© 2026 Gabriel Tupynambá. Todos os direitos reservados.
+© 2026 Gabriel Tupy. Todos os direitos reservados.
