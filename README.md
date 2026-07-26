@@ -3,7 +3,7 @@
 Bem-vindo ao repositório de documentação e auditoria visual do **SafeFood**: um protótipo de aplicativo móvel desenvolvido para simplificar a autoavaliação sanitária e a orientação sobre segurança dos alimentos, com base na **RDC nº 216/2004 (ANVISA)**.
 
 > **Nota de Autoria e Confidencialidade:**  
-> Este repositório destina-se exclusivamente à demonstração visual, arquitetural e documental da aplicação. O código-fonte integral permanece em repositório privado sob propriedade e autoria de **Gabriel Tupy**.
+> Este repositório destina-se exclusivamente à demonstração visual, arquitetural e documental da aplicação. O código-fonte integral permanece em repositório privado sob propriedade e autoria de **Gabriel Tupynambá**.
 
 ---
 
@@ -71,7 +71,7 @@ Como evolução natural deste protótipo, o plano de trabalho prevê:
 
 Para testes operacionais na build demonstrativa:
 * **Usuário:** `ContaTeste`
-* **Senha:** `123456`
+* **Senha:** `testando`
 
 ---
-© 2026 Gabriel Tupy. Todos os direitos reservados.
+© 2026 Gabriel Tupynambá. Todos os direitos reservados.
