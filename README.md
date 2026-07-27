@@ -12,7 +12,7 @@ Bem-vindo ao repositório de documentação e auditoria visual do **SafeFood**: 
 Teste o SafeFood agora mesmo através do navegador, instale no seu dispositivo Android ou assista ao nosso vídeo de apresentação do projeto:
 
 * 🌐 **Acesso Web (PWA):** [Clique aqui para acessar o SafeFood](https://safefood-app-5c91b.web.app)
-* 📱 **Download Android (APK):** [Baixar SafeFood.apk](./SafeFood.apk)
+* 📱 **Download Android (APK):** [Baixar SafeFood.apk]([./SafeFood.apk](https://github.com/gabriel-tupynamba/safefood-prototipo-doc/releases/download/v1.0.0/SafeFood.apk))
 * 🎬 **Vídeo de Apresentação:** *Ainda não disponível — Link em breve*
 
 ### 🗝️ Acesso Demonstrativo para Avaliação
