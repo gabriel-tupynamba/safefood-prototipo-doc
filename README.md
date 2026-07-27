@@ -7,6 +7,21 @@ Bem-vindo ao repositório de documentação e auditoria visual do **SafeFood**: 
 
 ---
 
+## 🚀 Acesse o Protótipo
+
+Teste o SafeFood agora mesmo através do navegador, instale no seu dispositivo Android ou assista ao nosso vídeo de apresentação do projeto:
+
+* 🌐 **Acesso Web (PWA):** [Clique aqui para acessar o SafeFood](COLOQUE_SEU_LINK_DO_FIREBASE_AQUI.web.app)
+* 📱 **Download Android (APK):** [Baixar SafeFood.apk](./SafeFood.apk)
+* 🎬 **Vídeo de Apresentação:** *Ainda não disponível — Link em breve*
+
+### 🗝️ Acesso Demonstrativo para Avaliação
+Para testes operacionais rápidos na build de demonstração, você pode utilizar as seguintes credenciais sem a necessidade de registro:
+* **Usuário:** `ContaTeste`
+* **Senha:** `testando`
+
+---
+
 ## 📱 Fluxo de Funcionamento e Telas Reais
 
 ### 1. Autenticação e Entrada no Sistema
@@ -65,14 +80,6 @@ O assistente virtual utiliza o modelo **Google Gemini** pré-configurado com ins
 - [x] Interface com suporte à acessibilidade hands-free por comandos de voz.
 - [ ] **Implementação da Arquitetura RAG (Retrieval-Augmented Generation):** Substituição do filtro determinístico por busca vetorial na legislação sanitária.
 - [ ] **Etapa de Alpha Testing:** Validação científica e curadoria do conteúdo gerado com supervisão especialista na RDC nº 216/2004.
-
----
-
-## 🗝️ Acesso Demonstrativo para Avaliação
-
-Para testes operacionais na build de demonstração:
-* **Usuário:** `ContaTeste`
-* **Senha:** `testando`
 
 ---
 © 2026 Gabriel Tupynambá. Todos os direitos reservados.
